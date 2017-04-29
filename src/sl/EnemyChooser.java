@@ -12,6 +12,7 @@ public class EnemyChooser {
 		makeMap();
 	}
 	
+	// Links map with enemies
 	public void makeMap(){
 		DataReader dr = new DataReader("./data");
 		ArrayList<ArrayList<Enemy>> a = dr.buildList();
@@ -20,6 +21,21 @@ public class EnemyChooser {
 		}
 	}
 	
+	// let user choose a map
+	public void chooseMap(){
+		for(int i = 0; i < name.length; i++){
+			String result = (i + 1) + ") " + name[i];
+			System.out.println(result);
+		}
+		Scanner in = new Scanner(System.in);
+		System.out.print("Choose a map: ");
+		int index = in.nextInt();
+		displayList(index);		// display list of enemies of chosen map
+		chooseInput(index);		// let user input choices
+		in.close();
+	}	
+	
+	// display list of enemies in chosen map
 	public void displayList(int index){
 		System.out.println(name[index]);
 		Enemy[] enemy = maps[index].getEnemy();		// get list of enemies
@@ -29,6 +45,7 @@ public class EnemyChooser {
 		}
 	}
 	
+	// let user input enemies
 	public void chooseInput(int index){
 		ArrayList<Integer> num = new ArrayList<>();
 		Enemy[] enemy = maps[index].getEnemy();		// get list of enemies
@@ -46,9 +63,7 @@ public class EnemyChooser {
 	}
 	
 	public static void main(String[] args){
-		int num = 2;
 		EnemyChooser ec = new EnemyChooser();
-		ec.displayList(num);
-		ec.chooseInput(num);
+		ec.chooseMap();
 	}
 }
