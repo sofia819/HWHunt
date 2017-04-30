@@ -1,5 +1,8 @@
 package sl;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -23,7 +26,7 @@ public class EnemyChooser {
 	}
 	
 	// let user choose a map
-	public void chooseMap(){
+	public void chooseMap() throws IOException{
 		for(int i = 0; i < name.length; i++){
 			String result = (i + 1) + ") " + name[i];
 			System.out.println(result);
@@ -47,7 +50,7 @@ public class EnemyChooser {
 	}
 	
 	// let user input enemies
-	public void chooseInput(int index){
+	public void chooseInput(int index) throws IOException{
 		ArrayList<Integer> num = new ArrayList<>();
 		Enemy[] enemy = maps[index].getEnemy();		// get list of enemies
 		store.add(maps[index].getName());	// add the name of the map to storage
@@ -66,11 +69,22 @@ public class EnemyChooser {
 		in.next(); // skip last input
 		if(in.next().equals("y"))
 			chooseMap();
-		else
+		else{
+			writeOut();
 			in.close();
+		}
 	}
 	
-	public static void main(String[] args){
+	public void writeOut() throws IOException{
+		 PrintWriter out = new PrintWriter(new FileWriter("./output.txt"));
+		 for(String s : store){
+			 System.out.println(s);
+			 out.println(s);
+		 }
+		 out.close();
+	}
+	
+	public static void main(String[] args) throws IOException{
 		EnemyChooser ec = new EnemyChooser();
 		ec.chooseMap();
 	}
