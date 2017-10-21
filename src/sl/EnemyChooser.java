@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class EnemyChooser {
@@ -58,7 +59,7 @@ public class EnemyChooser {
 		System.out.println("Choose input (any letter to quit): ");
 		while(in.hasNextInt()){
 			int input = in.nextInt() - 1; // display and actual indices are off by 1
-			if(input < enemy.length)
+			if(input < enemy.length && !num.contains(new Integer(input)))
 				num.add(input);
 		}
 		for(Integer i : num){
