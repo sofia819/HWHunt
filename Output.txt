@@ -1,5 +1,8 @@
 Azys Lla
-Clockwork Harvestman      13.0	8.0
-Clockwork Paladin         18.0	13.0
 6th Legion Vanguard       35.0	24.0
 Adamantite Claw           27.0	33.0
+
+The Churning Mists
+Amphiptere                17.0	27.0
+Archaeosaur               24.0	26.0
+

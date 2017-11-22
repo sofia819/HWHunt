@@ -66,10 +66,12 @@ public class EnemyChooser {
 			System.out.println(enemy[i].toString());
 			store.add(enemy[i].toString());	// add to storage
 		}
+		store.add(""); // add an empty string to insert a blank line between maps
 		System.out.print("Continue? (y/n): ");
 		in.next(); // skip last input
-		if(in.next().equals("y"))
+		if(in.next().equals("y")) {
 			chooseMap();
+		}
 		else{
 			writeOut();
 			in.close();
@@ -78,6 +80,7 @@ public class EnemyChooser {
 	
 	public void writeOut() throws IOException{
 		 PrintWriter out = new PrintWriter(new FileWriter("./output.txt"));
+		 System.out.println("\nOUTPUT");
 		 for(String s : store){
 			 System.out.println(s);
 			 out.println(s);
